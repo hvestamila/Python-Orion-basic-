@@ -1,5 +1,6 @@
 # 1. Define the id of next variables:
-from typing import Dict
+from functools import reduce
+from typing import Dict, List
 
 int_a = 55
 print("# 1: ", id(int_a))
@@ -152,13 +153,16 @@ def foo(x, y):
         return x
     else:
         return y
+
+
 #
 # (8)
 foo = lambda x, y, z: z if y < x and x > z else y
 #
 # 18. Convert (7) to lambda function
 foo = lambda x, y: x if x < y else y
-print(foo(3, 4))
+print('# 18: ', foo(3, 4))
+
 
 # 19*. Convert (8) to regular function
 def foo(x, y, z):
@@ -167,16 +171,52 @@ def foo(x, y, z):
     else:
         return y
 
-print(foo(3, 4, 5))
+
+print('# 19: ', foo(3, 4, 5))
 
 lst_to_sort = [5, 18, 1, 24, 33, 15, 13, 55]
 
 # 20. Sort lst_to_sort from min to max
-print(sorted(lst_to_sort))
+print('# 20: ', sorted(lst_to_sort))
 
 # 21. Sort lst_to_sort from max to min
-print(sorted(lst_to_sort, reverse=True))
+print('# 21: ', sorted(lst_to_sort, reverse=True))
 
 # 22. Use map and lambda to update the lst_to_sort by multiply each element by 2
+print('# 22: ', list(map(lambda x: x * 2, lst_to_sort)))
 
+# 23*. Raise each list number to the corresponding number on another list:
+list_A = [2, 3, 4]
+list_B = [5, 6, 7]
 
+list_comp = [i ** n for i in list_A for n in list_B]
+print('# 23: ', list_comp)
+
+# 24. Use reduce and lambda to compute the numbers of a lst_to_sort.
+lst_compute = reduce(lambda x, y: x + y, lst_to_sort)
+print('# 24: ', lst_compute)
+
+# 25. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
+lst_to_sort = list(filter(lambda elem: elem % 2 == 1, lst_to_sort))
+print('# 25: ', lst_to_sort)
+
+# 26. Considering the range of values: b = range(-10, 10), use the function filter to return only negative numbers.
+b = range(-10, 10)
+neg_num = list(filter(lambda x: x < 0, b))
+print('# 26: ', neg_num)
+
+# 27*. Using the filter function, find the values that are common to the two lists:
+list_1 = [1, 2, 3, 5, 7, 9]
+list_2 = [2, 3, 5, 6, 7, 8]
+list_3 = []
+for list_1_item in list_1:
+    for list_2_item in list_2:
+        if list_1_item == list_2_item:
+            list_3.append(list_1_item)
+
+print(list_3)
+
+list_4 = []
+for list_1_item in list_1:
+    list_4.extend(list(filter(lambda list_2_item: list_2_item == list_1_item, list_2)))
+print(list_4)
