@@ -112,10 +112,10 @@ for num in range(1, 11):
 print(d)
 
 # (5)
-dict_comprehension = {x: x**3 for x in range(10) if x**3 % 4 == 0}
+dict_comprehension = {x: x ** 3 for x in range(10) if x ** 3 % 4 == 0}
 
 # (6)
-dict_comprehension = {x: x**3 if x**3 % 4 == 0 else x for x in range(10)}
+dict_comprehension = {x: x ** 3 if x ** 3 % 4 == 0 else x for x in range(10)}
 
 # 14. Convert (3) to dict comprehension.
 dict_comp = {num: num ** 2 for num in range(1, 11) if num % 2 == 1}
@@ -128,9 +128,55 @@ print('# 15: ', dict_comp_cond)
 # 16. Convert (5) to regular for with if.
 dict_comprehension = {}
 for x in range(10):
-    if x**3 % 4 == 0:
+    if x ** 3 % 4 == 0:
         dict_comprehension[x] = x ** 3
 
 print(dict_comprehension)
 
 # 17*. Convert (6) to regular for with if-else.
+dict_comprehension = {}
+for x in range(10):
+    if x ** 3 % 4 == 0:
+        dict_comprehension[x] = x ** 3
+    else:
+        dict_comprehension[x] = x
+
+print('# 17: ', dict_comprehension)
+
+
+# Lambda:
+#
+# (7)
+def foo(x, y):
+    if x < y:
+        return x
+    else:
+        return y
+#
+# (8)
+foo = lambda x, y, z: z if y < x and x > z else y
+#
+# 18. Convert (7) to lambda function
+foo = lambda x, y: x if x < y else y
+print(foo(3, 4))
+
+# 19*. Convert (8) to regular function
+def foo(x, y, z):
+    if y < x and x > z:
+        return x
+    else:
+        return y
+
+print(foo(3, 4, 5))
+
+lst_to_sort = [5, 18, 1, 24, 33, 15, 13, 55]
+
+# 20. Sort lst_to_sort from min to max
+print(sorted(lst_to_sort))
+
+# 21. Sort lst_to_sort from max to min
+print(sorted(lst_to_sort, reverse=True))
+
+# 22. Use map and lambda to update the lst_to_sort by multiply each element by 2
+
+
