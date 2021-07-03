@@ -189,7 +189,7 @@ print('# 22: ', list(map(lambda x: x * 2, lst_to_sort)))
 list_A = [2, 3, 4]
 list_B = [5, 6, 7]
 
-list_comp = [i ** n for i in list_A for n in list_B]
+list_comp = [list_A[idx] ** list_B[idx] for idx, item in enumerate(list_A)]
 print('# 23: ', list_comp)
 
 # 24. Use reduce and lambda to compute the numbers of a lst_to_sort.
