@@ -15,6 +15,9 @@ class City:
         self.city_population = population
         self.__budget = budget
 
+    def __str__(self):
+        return f'The population of the city {self.city_name} is {self.city_population}'
+
     def get_budget(self):
         return self.__budget
 
