@@ -44,13 +44,13 @@ print('# 4: ', isinstance(dict_e, dict))
 print("# 5: Anna has {} apples and {} peaches.".format(4, 5))
 
 # 6. By passing index numbers into the curly braces.
-print("# 6: Anna has {1} apples and {0} peaches.".format(5, 4))
+print("# 6: Anna has {0} apples and {1} peaches.".format(4, 5))
 
 # 7. By using keyword arguments into the curly braces.
 print("# 7: Anna has {apples_num} apples and {peaches_num} peaches.".format(apples_num=4, peaches_num=5))
 
 # 8*. With indicators of field size (5 chars for the first and 3 for the second)
-print("# 8: Anna has {1:5} apples and {0:3} peaches.".format(5, 4))
+print("# 8: Anna has {0:5} apples and {1:3} peaches.".format(4, 5))
 
 # 9. With f-strings and variables
 apples_num = 4
@@ -65,7 +65,7 @@ dict_fruits = {
     "apples": 4,
     "peaches": 5
 }
-print(f"# 11: Anna has {dict_fruits['apples']} apples and {dict_fruits['peaches']} peaches.")
+print("# 11: Anna has %(apples)s apples and %(peaches)s peaches." % dict_fruits)
 
 # Comprehensions:
 # (1)
@@ -208,15 +208,22 @@ print('# 26: ', neg_num)
 # 27*. Using the filter function, find the values that are common to the two lists:
 list_1 = [1, 2, 3, 5, 7, 9]
 list_2 = [2, 3, 5, 6, 7, 8]
-list_3 = []
-for list_1_item in list_1:
-    for list_2_item in list_2:
-        if list_1_item == list_2_item:
-            list_3.append(list_1_item)
 
-print(list_3)
+list_3 = list(filter(lambda list_2_item: list_2_item in list_1, list_2))
+print('# 27: ', list_3)
 
-list_4 = []
-for list_1_item in list_1:
-    list_4.extend(list(filter(lambda list_2_item: list_2_item == list_1_item, list_2)))
-print(list_4)
+# Left for future reference
+
+# list_3 = []
+# for list_1_item in list_1:
+#     for list_2_item in list_2:
+#         if list_1_item == list_2_item:
+#             list_3.append(list_1_item)
+#
+# print(list_3)
+#
+# list_4 = []
+# for list_1_item in list_1:
+#     list_4.extend(list(filter(lambda list_2_item: list_2_item == list_1_item, list_2)))
+# print(list_4)
+
