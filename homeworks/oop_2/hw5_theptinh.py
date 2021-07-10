@@ -178,7 +178,7 @@ john = Person('John', 'USA')
 john.age = 41
 print('\t', john.age)
 
-print('# 10. ')
+print('# 10. getattr() and setattr()')
 class Student:
 
     id = 0
@@ -195,3 +195,18 @@ elli = Student(1, 'Elli', 'elli@gmail.com')
 setattr(elli, 'student_email', elli.email)
 print('\t Student email is: ', getattr(elli, 'student_email'))
 
+print('# 11. ')
+class Celsius:
+    """
+    By using @property convert the celsius to fahrenheit
+    Hint: (temperature * 1.8) + 32)
+    """
+    def __init__(self, temperature=0):
+        self._temperature = temperature
+
+    @property
+    def temperature(self):
+        return (self._temperature * 1.8) + 32
+
+summer_temp = Celsius(28)
+print('\t', summer_temp.temperature)
