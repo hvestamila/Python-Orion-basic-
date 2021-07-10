@@ -101,8 +101,10 @@ class Concert():
 
     @visitors_count.setter
     def visitors_count(self, v_count):
-        if v_count > Concert.max_visitors_num:
+        if v_count >= Concert.max_visitors_num:
             self._visitors_count = Concert.max_visitors_num
+        else:
+            self._visitors_count = v_count
 
 print('\t Before: ', Concert.max_visitors_num)
 Concert.max_visitors_num = 50
@@ -110,7 +112,9 @@ print('\t After: ', Concert.max_visitors_num)
 
 concert = Concert()
 concert.visitors_count = 1000
-print('\t Visitors count: ', concert.visitors_count)  # 50
+print('\t Visitors count if max_visitors_num less than visitors_count: ', concert.visitors_count)  # 50
+concert.visitors_count = 49
+print('\t Visitors count if max_visitors_num greater than visitors_count:: ', concert.visitors_count)  # 49
 
 print('# 6. Dataclasses')
 
