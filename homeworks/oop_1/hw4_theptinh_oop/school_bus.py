@@ -6,8 +6,8 @@ from bus import Bus
 
 class SchoolBus(School, Bus):
     def __init__(self, school_id, number_of_students, max_speed, mileage, seating_capacity, bus_school_color):
-        School.__init__(school_id, number_of_students)
-        Bus.__init__(max_speed, mileage, seating_capacity)
+        School.__init__(self, school_id, number_of_students)
+        Bus.__init__(self, max_speed, mileage, seating_capacity)
         self.bus_school_color = bus_school_color
 
     def bus_school_color(self):
