@@ -55,8 +55,8 @@ class Calc:
         return param_1 + param_2 + param_3
 
 
-calc_sum = Calc()
-print('\t', calc_sum.add_nums(3, 4, 5))
+# Call method not only on the object but also in the class itself
+print('\t', Calc.add_nums(3, 4, 5))
 
 print('# 4. Class method')
 
@@ -88,8 +88,8 @@ print('\t', pasta_3.ingredients)
 
 print('# 5. Getter/Setter')
 
-class Concert():
 
+class Concert():
     max_visitors_num = 0
 
     def __init__(self):
@@ -106,6 +106,7 @@ class Concert():
         else:
             self._visitors_count = v_count
 
+
 print('\t Before: ', Concert.max_visitors_num)
 Concert.max_visitors_num = 50
 print('\t After: ', Concert.max_visitors_num)
@@ -118,6 +119,7 @@ print('\t Visitors count if max_visitors_num greater than visitors_count:: ', co
 
 print('# 6. Dataclasses')
 
+
 @dataclasses.dataclass
 class AddressBookDataClass:
     key: int
@@ -128,18 +130,24 @@ class AddressBookDataClass:
     birthday: str
     age: int
 
-my_address = AddressBookDataClass(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com', '07/07/1995', 26)
+
+my_address = AddressBookDataClass(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com',
+                                  '07/07/1995', 26)
 print('\t', my_address.address)
 
 print('# 7. NamedTuple')
 
-AddressBookNamedTuple = namedtuple('AddressBook', ['key', 'name', 'phone_number', 'address', 'email', 'birthday', 'age'])
-my_address = AddressBookNamedTuple(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com', '07/07/1995', 26)
+AddressBookNamedTuple = namedtuple('AddressBook',
+                                   ['key', 'name', 'phone_number', 'address', 'email', 'birthday', 'age'])
+my_address = AddressBookNamedTuple(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com',
+                                   '07/07/1995', 26)
 print('\t', my_address.name)
 print('\t', my_address[3])
 print('\t', str(my_address))
 
 print('# 8. Str override')
+
+
 class AddressBook:
 
     def __init__(self, key, name, phone_number, address, email, birthday, age):
@@ -157,10 +165,13 @@ class AddressBook:
                f"address='{self.address}', email='{self.email}', " \
                f"birthday='{self.birthday}', age={self.age})"
 
-my_address_str = AddressBook(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com', '07/07/1995', 26)
+
+my_address_str = AddressBook(1, 'MyAddress', '380636384848', 'Chervonoyii Kalyny', 'hves.tamila@gmail.com',
+                             '07/07/1995', 26)
 print('\t', str(my_address_str))
 
 print('# 9. Override attribute value')
+
 
 class Person:
 
@@ -174,7 +185,6 @@ class Person:
 
     @age.setter
     def age(self, age_num):
-        age_num = 31
         self._age = age_num
 
 
@@ -183,34 +193,38 @@ john.age = 41
 print('\t', john.age)
 
 print('# 10. getattr() and setattr()')
-class Student:
 
+
+class Student:
     id = 0
     name = ""
-    student_email = ''
 
-    def __init__(self, id, name, email):
+    def __init__(self, id, name):
         self.id = id
         self.name = name
-        self.email = email
 
-elli = Student(1, 'Elli', 'elli@gmail.com')
 
-setattr(elli, 'student_email', elli.email)
-print('\t Student email is: ', getattr(elli, 'student_email'))
+elli = Student(1, 'Elli')
+setattr(elli, 'email', 'elli@gmail.com')
+student_email = getattr(elli, 'email')
+print('\t Student email is:', student_email)
 
 print('# 11. ')
+
+
 class Celsius:
     """
     By using @property convert the celsius to fahrenheit
     Hint: (temperature * 1.8) + 32)
     """
+
     def __init__(self, temperature=0):
         self._temperature = temperature
 
     @property
     def temperature(self):
         return (self._temperature * 1.8) + 32
+
 
 summer_temp = Celsius(28)
 print('\t', summer_temp.temperature)
